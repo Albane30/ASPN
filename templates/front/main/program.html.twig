@@ -1,0 +1,16 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}ASPN{% endblock %}
+
+{%block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+ {% for program in programs %}
+            
+                <p>{{ program.date ? program.date|date('d-m-Y') : '' }}</p>
+                <p>{{ program.content }}</p>
+{% endfor %}
+{% endblock %}

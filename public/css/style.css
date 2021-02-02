@@ -1,0 +1,57 @@
+/*nav*/
+
+.imgLogo {
+  width: 10vw;
+}
+.logo {
+  text-align: center;
+}
+.container-fluid {
+  background-color: #286335;
+  color: #ffffff;
+}
+.container-fluid a {
+  color: #ffffff !important;
+}
+ul.show {
+  background-color: #286335;
+}
+.navbar-brand {
+  font-family: "Bowlby One", cursive;
+  font-size: 3em;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 2vw;
+}
+.navbar-nav {
+  margin-left: 20vw;
+}
+.navbar {
+  padding: 0;
+}
+
+/*content home*/
+body {
+  margin: 0;
+  width: 100%;
+}
+
+.titre {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Bowlby One";
+}
+.container {
+  width: 100%;
+  max-width: 100% !important;
+  height: 300vh;
+  background-image: url("../img/backgroundHome.jpeg");
+  background-size: contain;
+}
+.article {
+  color: #ffffff;
+}
+.btn {
+  background-color: #286335;
+  color: #ffffff;
+}

@@ -1,0 +1,26 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}ASPN{% endblock %}
+
+{%block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+<h1 class='titre'>Bienvenue sur le site de l'ASPN</h1>
+        
+{% for article in articles %}
+           
+                <div class='article'>
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.content |u.truncate(50, '...', false) }}</p>
+                <p>Crée le {{ article.createdAt ? article.createdAt|date('d-m-Y H:i:s') : '' }}</p>
+                <a class="btn btn-dark" href='{{path('showInHome', {'id': article.id}) }}'>Lire la suite</a>
+                </div>
+
+{% endfor %}
+     
+
+
+{% endblock %}

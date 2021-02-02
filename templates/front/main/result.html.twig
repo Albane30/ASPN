@@ -1,0 +1,16 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}ASPN{% endblock %}
+
+{%block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+ {% for result in results %}
+            
+                <p>{{ result.date ? result.date|date('d-m-Y H:i:s') : '' }}</p>
+                <p>{{ result.content }}</p>
+{% endfor %}
+{% endblock %}

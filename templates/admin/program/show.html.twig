@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Program{% endblock %}
+
+{% block body %}
+    <h1>Program</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ program.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ program.date ? program.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ program.content }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_P_program_index') }}">back to list</a>
+
+    <a href="{{ path('admin_P_program_edit', {'id': program.id}) }}">edit</a>
+
+    {{ include('admin/program/_delete_form.html.twig') }}
+{% endblock %}
