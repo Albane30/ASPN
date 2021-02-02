@@ -1,0 +1,16 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}ASPN Loisirs{% endblock %}
+
+{%block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+ {% for user in users %}
+            
+                <p>{{ user.lastname }} {{ user.firstname }}</p>
+                
+{% endfor %}
+{% endblock %}

@@ -13,6 +13,21 @@
 .container-fluid a {
   color: #ffffff !important;
 }
+.container-fluid a :hover {
+  color: #00e132 !important;
+}
+.container-fluid :hover {
+  background-color: #286335 !important;
+}
+ul.show > li:nth-child(1) > a:nth-child(1):hover,
+ul.show > li:nth-child(2) > a:nth-child(1):hover,
+ul.show > li:nth-child(3) > a:nth-child(1):hover,
+ul.show > li:nth-child(4) > a:nth-child(1):hover,
+ul.show > li:nth-child(5) > a:nth-child(1):hover,
+ul.show > li:nth-child(6) > a:nth-child(1):hover,
+ul.show > li:nth-child(7) > a:nth-child(1):hover {
+  color: #00e132 !important;
+}
 ul.show {
   background-color: #286335;
 }

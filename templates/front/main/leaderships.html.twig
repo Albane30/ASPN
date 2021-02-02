@@ -1,0 +1,16 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}ASPN Bureau{% endblock %}
+
+{%block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+ {% for user in users %}
+            
+                <p>{{ user.lastname }} {{ user.firstname }}</p>
+                <p>{{ user.positionHeld }}</p>
+{% endfor %}
+{% endblock %}

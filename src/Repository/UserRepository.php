@@ -73,4 +73,53 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->getResult()
         ;
     }
+
+    public function findLeadership()
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.isLeadership = true')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findPlayerBySeniors1()
+    {
+        return $this->createQueryBuilder('u')
+            ->join('u.team', 't', 'WITH', "t.id='1'")
+            ->andWhere('u.isPlayer = true')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findPlayerBySeniors2()
+    {
+        return $this->createQueryBuilder('u')
+            ->join('u.team', 't', 'WITH', "t.id='2'")
+            ->andWhere('u.isPlayer = true')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findPlayerByFeminines()
+    {
+        return $this->createQueryBuilder('u')
+            ->join('u.team', 't', 'WITH', "t.id='3'")
+            ->andWhere('u.isPlayer = true')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findPlayerByLoisirs()
+    {
+        return $this->createQueryBuilder('u')
+            ->join('u.team', 't', 'WITH', "t.id='4'")
+            ->andWhere('u.isPlayer = true')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

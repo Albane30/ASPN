@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Convocation index{% endblock %}
+
+{% block body %}
+    <h1>Convocation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Place</th>
+                <th>Opponent</th>
+                <th>Meeting</th>
+                <th>Content</th>
+                <th>Équipe</th>
+                <th>Joueurs</th>
+                <th>actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for convocation in convocations %}
+            <tr>
+                <td>{{ convocation.id }}</td>
+                <td>{{ convocation.date ? convocation.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ convocation.type }}</td>
+                <td>{{ convocation.place }}</td>
+                <td>{{ convocation.opponent }}</td>
+                <td>{{ convocation.meeting }}</td>
+                <td>{{ convocation.content }}</td>
+                <td>{{ convocation.team.name }}</td>
+                {% for user in convocation.user %}
+                <td>{{ user.firstname ~ ' ' ~ user.lastname }}</td>
+                {% endfor %}
+                <td>
+                    <a href="{{ path('admin_C_convocation_show', {'id': convocation.id}) }}">show</a>
+                    <a href="{{ path('admin_C_convocation_edit', {'id': convocation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_C_convocation_new') }}">Create new</a>
+{% endblock %}
