@@ -29,7 +29,8 @@ class ConvocationType extends AbstractType
     {
         $builder
             ->add('date', DateTimeType::class,[
-                'label' => 'Date et heure'
+                'label' => 'Date et heure',
+                'required' => true,
             ])
             ->add('type', ChoiceType::class, [
                 'choices' => [
@@ -58,7 +59,7 @@ class ConvocationType extends AbstractType
             ;
             
             $builder->addEventListener(
-                FormEvents::POST_SET_DATA,
+                FormEvents::PRE_SET_DATA,
                 function (FormEvent $event) {
                     $form = $event->getForm();
 
@@ -67,11 +68,15 @@ class ConvocationType extends AbstractType
 
                 $team = $data->getTeam();
                 $users = null === $team ? [] : $team->getUser();
+                    // var_dump($data);exit;
                 $form->add('user', EntityType::class, [
                     'class' => User::class,
                     'placeholder' => 'Joueurs convoqués',
                     'choices' => $users,
-                    'required' => false
+                    'required' => true,
+                    'by_reference' => false,
+                    'expanded'=>false,
+                    'multiple' => true,
                 ]);
             }
         );
@@ -87,7 +92,8 @@ class ConvocationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Convocation::class
+            'data_class' => Convocation::class,
+            'attr' => ['id' => 'convocation_form']
         ));
     }
  
