@@ -122,4 +122,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->getResult()
         ;
     }
+
+    // Search the users that belongs to the team with the given id as GET parameter "teamid"
+    public function findByTeam($teamId){
+
+        return $usersRepository->createQueryBuilder("u")
+        ->where("u.team = :teamid")
+        ->setParameter("teamid", $teamId)
+        ->getQuery()
+        ->getResult();
+    }
 }

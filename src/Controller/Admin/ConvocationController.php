@@ -5,10 +5,12 @@ namespace App\Controller\Admin;
 use App\Entity\Convocation;
 use App\Form\ConvocationType;
 use App\Repository\ConvocationRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("admin/convocation", name="admin_C_" )
@@ -90,5 +92,13 @@ class ConvocationController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_C_convocation_index');
+    }
+
+    
+
+    public function listUsersOfTeam(Request $request, UserRepository $userRepository) 
+    {
+        $userRepository->findByTeam($teamId);
+       
     }
 }

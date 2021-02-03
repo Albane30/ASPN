@@ -5,17 +5,26 @@ namespace App\Form;
 use App\Entity\Convocation;
 use App\Entity\Team;
 use App\Entity\User;
+use App\Repository\UserRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class ConvocationType extends AbstractType
-{
+{   private $userRepository;
+
+   
+   public function __construct(UserRepository $userRepository)
+   {
+       $this->userRepository = $userRepository;
+   }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -41,27 +50,45 @@ class ConvocationType extends AbstractType
             ->add('content', TextType::class,[
                 'label' => 'Infos'
             ])
-            ->add('user', EntityType::class, [
-                'by_reference' => false,
-                'expanded'=>true,
-                'multiple' => true,
-                'class' => User::class,
-                'choice_label' => function (User $user) {
-                    return $user->getFirstname() . ' ' . $user->getLastname();
-            
-                }])
             ->add('team', EntityType::class, [
                 'by_reference' => false,
                 'class' => Team::class,
                 'choice_label' => 'name'
             ])
-        ;
+            ;
+            
+            $builder->addEventListener(
+                FormEvents::POST_SET_DATA,
+                function (FormEvent $event) {
+                    $form = $event->getForm();
+
+                     // this would be your entity
+                $data = $event->getData();
+
+                $team = $data->getTeam();
+                $users = null === $team ? [] : $team->getUser();
+                $form->add('user', EntityType::class, [
+                    'class' => User::class,
+                    'placeholder' => 'Joueurs convoqués',
+                    'choices' => $users,
+                    'required' => false
+                ]);
+            }
+        );
+        
     }
 
+    
+
+
+    /**
+     * {@inheritdoc}
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => Convocation::class,
-        ]);
+        $resolver->setDefaults(array(
+            'data_class' => Convocation::class
+        ));
     }
+ 
 }
