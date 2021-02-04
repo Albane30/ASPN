@@ -100,7 +100,7 @@ class Convocation
         return $this->place;
     }
 
-    public function setPlace(string $place): self
+    public function setPlace(?string $place): self
     {
         $this->place = $place;
 
@@ -112,7 +112,7 @@ class Convocation
         return $this->opponent;
     }
 
-    public function setOpponent(string $opponent): self
+    public function setOpponent(?string $opponent): self
     {
         $this->opponent = $opponent;
 
@@ -124,7 +124,7 @@ class Convocation
         return $this->meeting;
     }
 
-    public function setMeeting(string $meeting): self
+    public function setMeeting(?string $meeting): self
     {
         $this->meeting = $meeting;
 
@@ -136,7 +136,7 @@ class Convocation
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 
@@ -178,4 +178,11 @@ class Convocation
 
         return $this;
     }
+
+    // A affecter sur le premier champ 
+    public function __toString()
+    {
+        return $this->place;
+    }
+
 }

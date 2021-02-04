@@ -6,9 +6,15 @@ use App\Repository\TeamRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Entity\File as EmbeddedFile;
+use App\Entity\Picture;
+
 
 /**
  * @ORM\Entity(repositoryClass=TeamRepository::class)
+ * @Vich\Uploadable
  */
 class Team
 {
@@ -25,7 +31,7 @@ class Team
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="team")
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="team", cascade={"persist", "remove"})
      */
     private $pictures;
 
@@ -41,7 +47,7 @@ class Team
 
     public function __construct()
     {
-        $this->picture = new ArrayCollection();
+        $this->pictures = new ArrayCollection();
         $this->user = new ArrayCollection();
     }
 
@@ -69,6 +75,7 @@ class Team
     {
         return $this->pictures;
     }
+
 
     public function addPicture(Picture $picture): self
     {
@@ -136,5 +143,11 @@ class Team
         $this->user->removeElement($user);
 
         return $this;
+    }
+
+    // A affecter sur le premier champ 
+    public function __toString()
+    {
+        return $this->name;
     }
 }

@@ -21,9 +21,11 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.lastname }}</td>
                 <td>{{ user.firstname }}</td>
+                <td>
          {% for team in user.team %}  
-                <td>{{ team.name }}</td>
-                {% endfor %}      
+                {{ team.name }}<br>
+                {% endfor %}
+                </td>      
                 <td>
                     <a href="{{ path('admin_U_user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('admin_U_user_edit', {'id': user.id}) }}">edit</a>

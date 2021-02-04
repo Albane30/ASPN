@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -15,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+
 
 class ConvocationType extends AbstractType
 {   private $userRepository;
@@ -34,9 +36,9 @@ class ConvocationType extends AbstractType
             ])
             ->add('type', ChoiceType::class, [
                 'choices' => [
-                    'Amical' => '0',
-                    'Championnat' => '1',
-                    'Coupe' => '2',
+                    'Amical' => 'Amical',
+                    'Championnat' => 'Championnat',
+                    'Coupe' => 'Coupe',
             ],
             ])
             ->add('place', TextType::class,[
@@ -58,28 +60,39 @@ class ConvocationType extends AbstractType
             ])
             ;
             
-            $builder->addEventListener(
-                FormEvents::PRE_SET_DATA,
-                function (FormEvent $event) {
-                    $form = $event->getForm();
-
-                     // this would be your entity
-                $data = $event->getData();
-
-                $team = $data->getTeam();
+            $formModifier = function (FormInterface $form, Team $team = null) {
                 $users = null === $team ? [] : $team->getUser();
-                    // var_dump($data);exit;
+    
                 $form->add('user', EntityType::class, [
                     'class' => User::class,
-                    'placeholder' => 'Joueurs convoqués',
+                    'placeholder' => '',
                     'choices' => $users,
-                    'required' => true,
-                    'by_reference' => false,
-                    'expanded'=>false,
                     'multiple' => true,
+                    'by_reference' => false,
+                    'expanded' => true,
+                    'choice_label' => function (User $user) {
+                        return $user->getFirstname() . ' ' . $user->getLastname();
+                
+                    }
                 ]);
-            }
-        );
+            };
+    
+            $builder->addEventListener(
+                FormEvents::PRE_SET_DATA,
+                function (FormEvent $event) use ($formModifier) {
+                    $data = $event->getData();
+    
+                    $formModifier($event->getForm(), $data->getTeam());
+                }
+            );
+    
+            $builder->get('team')->addEventListener(
+                FormEvents::POST_SUBMIT,
+                function (FormEvent $event) use ($formModifier) {
+                    $team = $event->getForm()->getData();
+                    $formModifier($event->getForm()->getParent(), $team);
+                }
+            );
         
     }
 

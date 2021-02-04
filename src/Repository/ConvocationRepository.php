@@ -47,4 +47,41 @@ class ConvocationRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findConvocBySeniors1()
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.team', 't', 'WITH', "t.id='1'")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findConvocBySeniors2()
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.team', 't', 'WITH', "t.id='2'")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findConvocByFeminines()
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.team', 't', 'WITH', "t.id='3'")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findConvocByLoisirs()
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.team', 't', 'WITH', "t.id='4'")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
+

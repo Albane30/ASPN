@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\FormTypeInterface;
+
 
 class PictureType extends AbstractType
 {
