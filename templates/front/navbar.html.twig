@@ -39,10 +39,9 @@
             Équipes
           </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="/user/seniors1">Séniors 1</a></li>
-            <li><a class="dropdown-item" href="/user/seniors2">Séniors 2</a></li>
-            <li><a class="dropdown-item" href="/user/feminines">Féminines</a></li>
-            <li><a class="dropdown-item" href="/user/loisirs">Loisirs</a></li>
+            {% for team in teamService.teams %}
+            <li><a class="dropdown-item" href="{{ path('front_T_team_show', { 'id': team.id }) }}">{{ team.name }}</a></li>
+            {% endfor %}
             <li><a class="dropdown-item" href="">U18</a></li>
             <li><a class="dropdown-item" href="">U15</a></li>
             <li><a class="dropdown-item" href="">U13</a></li>

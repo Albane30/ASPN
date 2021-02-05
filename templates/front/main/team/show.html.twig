@@ -1,6 +1,6 @@
 {% extends 'front/layout.html.twig' %}
 
-{% block title %}ASPN Séniors 2% {% endblock %}
+{% block title %} {{ team.name }} {% endblock %}
 
 {%block stylesheets %}
 {{ parent() }}
@@ -8,15 +8,16 @@
 
 {% block content %}
 
- {% for user in users %}
+ {% for user in team.user %}
             
     <p>{{ user.lastname }} {{ user.firstname }}</p>
+    {% endfor %}
     {# {% if picture.team !=null %} #}
-    {% for team in picture.team %}
-    <img src="{{ vich_uploader_asset(picture.team, 'file', 'App\\Entity\\Picture') }}" alt="{{ team.name }}" />
+    {% for picture in team.pictures %}
+    <img src="{{ vich_uploader_asset(picture, 'file', 'App\\Entity\\Picture') }}" alt="{{ team.name }}" />
     {% endfor %}
     {# {% endif %} #}
-{% endfor %}
+
 
 
 {% endblock %}

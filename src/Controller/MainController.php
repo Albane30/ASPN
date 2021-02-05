@@ -27,7 +27,7 @@ class MainController extends AbstractController
      * @Route("show/{id}", name="showInHome", methods={"GET"})
      */
     public function show(Article $article): Response
-    {
+    {   
         return $this->render('front/main/show.html.twig', [
             'article' => $article,
         ]);

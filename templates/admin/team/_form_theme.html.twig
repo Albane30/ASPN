@@ -1,0 +1,17 @@
+{% block _team_pictures_widget %}
+    <ul id="team-images-fields-list"
+        data-prototype="{{ form_widget(prototype)|e }}"
+        data-widget-tags="{{ '<li></li>'|e }}"
+        data-widget-counter="{{ value|length }}"
+    >
+        {% for key,teamPictureForm in form.children %}
+            {{ form_widget(teamPictureForm) }}
+
+        {% endfor %}
+    </ul>
+
+    <button type="button"
+            class="add-another-collection-widget"
+            data-list-selector="#team-images-fields-list">Add another Product Image</button>
+{% endblock %}
+
