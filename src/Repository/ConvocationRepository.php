@@ -83,5 +83,14 @@ class ConvocationRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    // public function findConvocByTeam()
+    // {
+    //     return $this->createQueryBuilder('c')
+    //         ->join('c.team', 't', 'WITH', "t.id='id'")
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
 }
 

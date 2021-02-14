@@ -59,4 +59,14 @@ class ConvocationController extends AbstractController
         ]);
     }
 
+    //  /**
+    //  * @Route("/convocation/{id}", name="convoc_show", methods={"GET"})
+    //  */
+    // public function show(ConvocationRepository $convocationRepository): Response
+    // {
+    //     $teamConvoc = $convocationRepository->findConvocByTeam();
+    //     return $this->render('front/main/convoc/show.html.twig', [
+    //         'convocation' => $teamConvoc,
+    //     ]);
+    // }
 }

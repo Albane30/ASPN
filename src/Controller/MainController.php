@@ -14,7 +14,7 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home(Request $request): Response
+    public function home(ArticleRepository $aticleRepository): Response
     {
         $repo = $this->getDoctrine()->getRepository(Article::class);
         $listArticles = $repo->findAll();

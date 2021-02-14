@@ -1,4 +1,4 @@
-<div class='logo'><img class='imgLogo' src='img/logo.png' alt='logo ASPN'></img></div>
+<div class='logo'><img class='imgLogo' src='../img/logo.png' alt='logo ASPN'></img></div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -42,12 +42,6 @@
             {% for team in teamService.teams %}
             <li><a class="dropdown-item" href="{{ path('front_T_team_show', { 'id': team.id }) }}">{{ team.name }}</a></li>
             {% endfor %}
-            <li><a class="dropdown-item" href="">U18</a></li>
-            <li><a class="dropdown-item" href="">U15</a></li>
-            <li><a class="dropdown-item" href="">U13</a></li>
-            <li><a class="dropdown-item" href="">U11</a></li>
-            <li><a class="dropdown-item" href="">U9</a></li>
-            <li><a class="dropdown-item" href="">U7</a></li>
           </ul>
         </li>
 

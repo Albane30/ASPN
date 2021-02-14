@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <th>Date</th>
-                <td>{{ convocation.date ? convocation.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ convocation.date ? convocation.date|date('d-m-Y H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Type</th>
@@ -35,6 +35,10 @@
                 <th>Content</th>
                 <td>{{ convocation.content }}</td>
             </tr>
+
+            {% for user in convocation.user %}
+                <td>{{ user.firstname ~ ' ' ~ user.lastname }}</td>
+                {% endfor %}
         </tbody>
     </table>
 

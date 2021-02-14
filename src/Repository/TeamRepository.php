@@ -47,4 +47,13 @@ class TeamRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findConvocByTeam()
+    {
+        return $this->createQueryBuilder('t')
+            ->join('t.convocation', 'c', 'WITH', "t.id='id'")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
