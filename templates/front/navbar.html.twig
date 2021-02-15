@@ -50,16 +50,9 @@
             Convocations
           </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="/convocation/seniors1">Séniors 1</a></li>
-            <li><a class="dropdown-item" href="/convocation/seniors2">Séniors 2</a></li>
-            <li><a class="dropdown-item" href="/convocation/feminines">Féminines</a></li>
-            <li><a class="dropdown-item" href="/convocation/loisirs">Loisirs</a></li>
-            <li><a class="dropdown-item" href="">U18</a></li>
-            <li><a class="dropdown-item" href="">U15</a></li>
-            <li><a class="dropdown-item" href="">U13</a></li>
-            <li><a class="dropdown-item" href="">U11</a></li>
-            <li><a class="dropdown-item" href="">U9</a></li>
-            <li><a class="dropdown-item" href="">U7</a></li>
+            {% for team in teamService.teams %}
+            <li><a class="dropdown-item" href="{{ path('front_T_convoc_show', { 'id': team.id }) }}">{{ team.name }}</a></li>
+            {% endfor %}
           </ul>
         </li>
 

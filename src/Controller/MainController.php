@@ -17,7 +17,7 @@ class MainController extends AbstractController
     public function home(ArticleRepository $aticleRepository): Response
     {
         $repo = $this->getDoctrine()->getRepository(Article::class);
-        $listArticles = $repo->findAll();
+        $listArticles = $repo->findBy([], ['createdAt'=>'DESC'], 3);
         return $this->render('front/main/home.html.twig', [
             'articles' => $listArticles
         ]);
