@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Manage;
 
 use App\Entity\Convocation;
 use App\Form\ConvocationType;
@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * @Route("admin/convocation", name="admin_C_" )
+ * @Route("manage/convocation", name="admin_C_" )
  */
 class ConvocationController extends AbstractController
 {
@@ -32,6 +32,7 @@ class ConvocationController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        
         $convocation = new Convocation();
         $form = $this->createForm(ConvocationType::class, $convocation);
         $form->handleRequest($request);

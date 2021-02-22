@@ -9,10 +9,12 @@
 {% block content %}
 
  {% for user in team.user %}
-            
+          
     <p>{{ user.lastname }} {{ user.firstname }}</p>
+    <img src="{{ vich_uploader_asset(user, 'file') }}" />
+
     {% endfor %}
-    {# {% if picture.team !=null %} #}
+    {# {% if picture %} #}
     {% for picture in team.pictures %}
     <img src="{{ vich_uploader_asset(picture, 'file', 'App\\Entity\\Picture') }}" alt="{{ team.name }}" />
     {% endfor %}

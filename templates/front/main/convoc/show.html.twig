@@ -8,7 +8,7 @@
 
 {% block content %}
 
-   
+   {% if convocation %}
             <tr>
                 
                 <p>{{ convocation.date ? convocation.date|date('d-m-Y H:i:s') : '' }}</p>
@@ -21,23 +21,9 @@
                 {% for user in convocation.user %}
                 <p>{{ user.firstname ~ ' ' ~ user.lastname }}</p>
                 {% endfor %}
-   
-
-
-     {# {% for team in convocation %}
-                <p>{{ team.id }}</p>
-                <p>{{ team.convocation.date ? convocation.date|date('d-m-Y H:i:s') : '' }}</p>
-                <p>{{ team.convocation.type }}</p>
-                <p>{{ convocation.place }}</p>
-                <p>{{ convocation.opponent }}</p>
-                <p>{{ convocation.meeting }}</p>
-                <p>{{ convocation.content }}</p>
-                <p>{{ convocation.team.name }}</p>
-                {% for user in convocation.user %}
-                <p>{{ user.firstname ~ ' ' ~ user.lastname }}</p>
-                {% endfor %}
-   
-    {% endfor %} #}
+   {% else %}
+   <div>Pas de convocation pour cette équipe</div>
+   {% endif %}
 
 
 {% endblock %}

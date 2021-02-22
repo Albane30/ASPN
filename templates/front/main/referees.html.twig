@@ -11,5 +11,6 @@
  {% for user in users %}
             
                 <p>{{ user.lastname }} {{ user.firstname }}</p>
+                <img src="{{ vich_uploader_asset(user, 'file') }}" />
 {% endfor %}
 {% endblock %}

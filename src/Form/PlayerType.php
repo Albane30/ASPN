@@ -8,13 +8,18 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+
 
 class PlayerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lastname')
+            ->add('lastname', TextType::class,[
+                'label' => 'Nom'
+            ])
             ->add('firstname')
             ->add('team', EntityType::class, [
                 'by_reference' => false,
@@ -23,6 +28,9 @@ class PlayerType extends AbstractType
                 'class' => Team::class,
                 'choice_label' => 'name'
             ] )
+            ->add('file', VichImageType::class, [
+                'label' => 'Avatar'
+            ])
         ;
             
     }

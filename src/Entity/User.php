@@ -8,10 +8,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @Vich\Uploadable
  */
 class User implements UserInterface
 {
@@ -72,6 +75,12 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $positionHeld;
+
+    /**
+     * @Vich\UploadableField(mapping="cover", fileNameProperty="avatar")
+     * @var File|null
+     */
+    private $file;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -260,6 +269,21 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getFile(): ?File
+    {
+        return $this->file;
+    }
+
+    
+    public function setFile(?File $file = null): self
+    {
+        $this->file = $file;
+
+           return $this; 
+        
+    }
+
 
     public function getAvatar(): ?string
     {

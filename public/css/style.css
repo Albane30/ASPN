@@ -1,8 +1,26 @@
 /*nav*/
 
-.imgLogo {
+.logoSpinner {
   width: 10vw;
+  animation-name: spinner;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
 }
+
+@keyframes spinner {
+  from {
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  to {
+    -moz-transform: rotateY(-360deg);
+    -ms-transform: rotateY(-360deg);
+    transform: rotateY(-360deg);
+  }
+}
+
 .logo {
   text-align: center;
 }
@@ -69,4 +87,42 @@ body {
 .btn {
   background-color: #286335;
   color: #ffffff;
+  border: 1px solid #286335;
+}
+.btn:hover {
+  background-color: #ffffff;
+  color: #286335;
+  border: 1px solid #286335;
+}
+/*Admin*/
+
+.row {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+.col-sm-4 {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.card {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 1) !important;
+}
+.grass {
+  background-image: url("../img/grass.jpg");
+  background-size: contain;
+  height: 80vh;
+}
+.adminUserAvatar {
+  width: 100px;
+  height: 100px;
+  background-image: url(..//img/user-secret-solid.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.userAvatar {
+  width: 100px;
+  height: 100px;
 }

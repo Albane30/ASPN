@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Manage;
 
 use App\Entity\Program;
 use App\Form\ProgramType;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("admin/program", name="admin_P_")
+ * @Route("manage/program", name="admin_P_")
  */
 class ProgramController extends AbstractController
 {

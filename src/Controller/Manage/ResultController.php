@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Manage;
 
 use App\Entity\Result;
 use App\Form\ResultType;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("admin/result", name="admin_R_")
+ * @Route("manage/result", name="admin_R_")
  */
 class ResultController extends AbstractController
 {

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+
+<div class='grass'>  
+<div class="row"> 
+  <div class="col-sm-4">
+    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        <h5 class="card-title">Convocations</h5>
+        <p class="card-text">Pour ajouter, modifier ou supprimer une convocation</p>
+        <a href="{{ path('admin_C_convocation_index') }}" class="btn btn-primary">Cliquez ici</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-sm-4">
+    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        <h5 class="card-title">Programme du week-end</h5>
+        <p class="card-text">Pour ajouter, modifier ou supprimer le programme du week-end</p>
+        <a href="{{ path('admin_P_program_index') }}" class="btn btn-primary">Cliquez ici</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        <h5 class="card-title">Résultats</h5>
+        <p class="card-text">Pour ajouter, modifier ou supprimer les résultats du week-end</p>
+            <a href="{{ path('admin_R_result_index') }}" class="btn btn-primary">Cliquez ici</a>
+      </div>
+    </div>
+  </div>
+  {% if is_granted('ROLE_SUPER_ADMIN') %}
+  <div class="col-sm-4">
+    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        <h5 class="card-title">Équipes</h5>
+        <p class="card-text">Pour ajouter, modifier ou supprimer une équipe</p>
+        <a href="{{ path('admin_T_team_index') }}" class="btn btn-primary">Cliquez ici</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        <h5 class="card-title">Joueurs/Arbitres/Coach/Bureau</h5>
+        <p class="card-text">Pour ajouter, modifier ou supprimer un joueur, un arbitre, un coach ou un membre du bureau</p>
+        <a href="{{ path('admin_U_user_index') }}" class="btn btn-primary">Cliquez ici</a>
+      </div>
+    </div>
+  </div>
+<div class="col-sm-4">
+    <div class="card h-100 shadow p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        <h5 class="card-title">Articles</h5>
+        <p class="card-text">Pour ajouter, modifier ou supprimer un article</p>
+            <a href="{{ path('admin_article_index') }}" class="btn btn-primary">Cliquez ici</a>
+      </div>
+    </div>
+  </div>
+{% endif %}
+</div>
+</div>
+{% endblock %}

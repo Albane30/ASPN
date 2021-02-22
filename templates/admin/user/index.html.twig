@@ -12,6 +12,7 @@
                 <th>Lastname</th>
                 <th>Firstname</th>
                 <th>Team</th>
+                <th>Avatar</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -25,7 +26,8 @@
          {% for team in user.team %}  
                 {{ team.name }}<br>
                 {% endfor %}
-                </td>      
+                </td>
+                <td><div class='adminUserAvatar'><img class='userAvatar' src="{{ vich_uploader_asset(user, 'file') }}" /></td></div>     
                 <td>
                     <a href="{{ path('admin_U_user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('admin_U_user_edit', {'id': user.id}) }}">edit</a>
