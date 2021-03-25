@@ -23,7 +23,8 @@ class RefereeType extends AbstractType
                 'label' => 'Prénom'
             ])
             ->add('file', VichImageType::class, [
-                'label' => 'Avatar'
+                'label' => 'Avatar',
+                'required'=> false, 
             ])
         ;
             

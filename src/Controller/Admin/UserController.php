@@ -157,6 +157,9 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if(!$user->getFile()){
+                $user->setAvatar('user-secret-solid.svg');
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('admin_U_user_index');

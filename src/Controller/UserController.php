@@ -38,6 +38,17 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("user/coach", name="coach_index", methods={"GET"})
+     */
+    public function findCoach(UserRepository $userRepository): Response
+    {   
+        $coachs = $userRepository->findCoach();
+        return $this->render('front/main/coachs.html.twig', [
+            'users' => $coachs,
+        ]);
+    }
+
+    /**
      * @Route("user/seniors1", name="seniors1_index", methods={"GET"})
      */
     public function findSeniors1(UserRepository $userRepository): Response

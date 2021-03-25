@@ -1,6 +1,12 @@
 {% extends 'front/layout.html.twig' %}
 
-{% block title %} Convoc {% endblock %}
+{% block title %}
+   {% if convocation %}
+      {{ convocation.team.name }}
+   {% else %}
+   Convocations
+   {% endif %}
+{% endblock %}
 
 {%block stylesheets %}
 {{ parent() }}

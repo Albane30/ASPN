@@ -6,8 +6,8 @@ $('.add-another-collection-widget').click(function (e) {
     // grab the prototype template
     var newWidget = list.attr('data-prototype');
     // replace the "__name__" used in the id and name of the prototype
-    // with a number that's unique to your emails
-    // end name attribute looks like name="contact[emails][2]"
+    // with a number that's unique to your pictures
+    // end name attribute looks like name="team[pictures][2]"
     newWidget = newWidget.replace(/__name__/g, counter);
     // Increase the counter
     counter++;

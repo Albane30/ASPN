@@ -12,5 +12,10 @@
             
                 <p>{{ user.lastname }} {{ user.firstname }}</p>
                 <p>{{ user.positionHeld }}</p>
+                {% if user.avatar %}
+                <img src="{{ vich_uploader_asset(user, 'file') }}" />
+                {% else %}
+                <img src="{{ asset('img/user-secret-solid.svg') }}" />
+                {% endif %}
 {% endfor %}
 {% endblock %}

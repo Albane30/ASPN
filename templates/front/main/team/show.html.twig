@@ -8,17 +8,16 @@
 
 {% block content %}
 
- {% for user in team.user %}
+    {% for user in team.user %}
           
     <p>{{ user.lastname }} {{ user.firstname }}</p>
-    <img src="{{ vich_uploader_asset(user, 'file') }}" />
+    {% endfor %}
 
-    {% endfor %}
-    {# {% if picture %} #}
-    {% for picture in team.pictures %}
-    <img src="{{ vich_uploader_asset(picture, 'file', 'App\\Entity\\Picture') }}" alt="{{ team.name }}" />
-    {% endfor %}
-    {# {% endif %} #}
+    {% if team.pictures %}
+        {% for picture in team.pictures %}
+        <img src="{{ vich_uploader_asset(picture, 'file', 'App\\Entity\\Picture') }}" alt="{{ team.name }}" />
+        {% endfor %}
+    {% endif %}
 
 
 

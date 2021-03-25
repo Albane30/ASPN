@@ -32,12 +32,10 @@ class TeamController extends AbstractController
     /**
      * @Route("/convocation/{id}", name="convoc_show", methods={"GET"})
      */
-    public function showConvoc(TeamRepository $teamRepository, Team $team): Response
+    public function showConvoc(Team $team): Response
     {
         $teamConvoc= $team->getConvocation();
         
-        
-        // $teamConvoc = $teamRepository->findConvocByTeam();
         return $this->render('front/main/convoc/show.html.twig', [
             'convocation' => $teamConvoc,
         ]);

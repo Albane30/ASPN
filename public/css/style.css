@@ -96,10 +96,6 @@ body {
 }
 /*Admin*/
 
-.row {
-  margin-left: 5vw;
-  margin-right: 5vw;
-}
 .col-sm-4 {
   margin-top: 1vw;
   margin-bottom: 1vw;
@@ -113,16 +109,38 @@ body {
 .grass {
   background-image: url("../img/grass.jpg");
   background-size: contain;
-  height: 80vh;
+  height: 100%;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 .adminUserAvatar {
   width: 100px;
   height: 100px;
-  background-image: url(..//img/user-secret-solid.svg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 .userAvatar {
-  width: 100px;
-  height: 100px;
+  width: 8vw;
+  min-width: 6vw;
+  height: 18vh;
+  object-fit: contain;
+}
+
+.card-image-top {
+  min-width: 6vw !important;
+  height: 18vh !important;
+}
+
+/*Homepage*/
+.container > div {
+  justify-content: center;
+}
+
+.article {
+  margin-left: 5vw;
+  margin-right: 5vw;
+  color: #000;
+}
+.articlePicture {
+  margin: auto;
 }
