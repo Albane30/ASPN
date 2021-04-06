@@ -32,4 +32,13 @@ class MainController extends AbstractController
             'article' => $article,
         ]);
     }
+
+     /**
+     * @Route("/notre-structure", name="structure")
+     */
+    public function structure(): Response
+    {
+
+        return $this->render('front/main/structure.html.twig');
+    }
 }

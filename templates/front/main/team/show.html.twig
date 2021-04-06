@@ -6,19 +6,41 @@
 {{ parent() }}
 {% endblock %}
 
-{% block content %}
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}
 
-    {% for user in team.user %}
-          
+{% block content %}
+    <h1 class="text-center text-white">{{ team.name }}</h1>
+    {# {% for user in team.user %}    
     <p>{{ user.lastname }} {{ user.firstname }}</p>
-    {% endfor %}
+    {% endfor %} #}
 
     {% if team.pictures %}
+    
+
+    <div id="team-carousel" class="carousel slide m-auto shadow" data-bs-ride="carousel">
+        <div class="carousel-indicators">
         {% for picture in team.pictures %}
-        <img src="{{ vich_uploader_asset(picture, 'file', 'App\\Entity\\Picture') }}" alt="{{ team.name }}" />
+            <button type="button" data-bs-target="#team-carousel" data-bs-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></button>
         {% endfor %}
+        </div>
+        <div class="carousel-inner rounded">
+        {% for picture in team.pictures %}
+            <div class="carousel-item {% if loop.index0 == 0 %} active {% endif %}"> 
+                <img class="d-block w-100" src="{{ vich_uploader_asset(picture, 'file', 'App\\Entity\\Picture') }}" alt="{{ team.name }}" alt="First slide">
+            </div>
+        {% endfor %}
+        </div>
+    <a role="button" class="carousel-control-prev" type="button" data-bs-target="#team-carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </a>
+    <a role="button" class="carousel-control-next" type="button" data-bs-target="#team-carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </a>
+    </div>
+
     {% endif %}
-
-
-
 {% endblock %}

@@ -27,20 +27,20 @@ $team.change(function() {
   var data = {};
   data[$team.attr('name')] = $team.val();
   data[$token.attr('name')] = $token.val();
-  console.log(data);
+ 
   // Submit data via AJAX to the form's action path.
   $.ajax({
     url : $form.attr('action'),
     type: $form.attr('method'),
     data : data,
     success: function(html) {
-        console.log(html);
+        
       // Replace current user field ...
       $('#convocation_user').replaceWith(
         // ... with the returned one from the AJAX response.
         $(html).find('#convocation_user')
       );
-      // Position field now displays the appropriate positions.
+      // Position field now displays the appropriate users.
     }
   });
 });

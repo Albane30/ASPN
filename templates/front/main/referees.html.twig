@@ -8,13 +8,23 @@
 
 {% block content %}
 
- {% for user in users %}
-            
-                <p>{{ user.lastname }} {{ user.firstname }}</p>
-                {% if user.avatar %}
-                <img src="{{ vich_uploader_asset(user, 'file') }}" />
-                {% else %}
-                <img src="{{ asset('img/user-secret-solid.svg') }}" />
-                {% endif %}
-{% endfor %}
+
+  <div class="row m-5">
+  
+    {% for user in users %}
+      <div class="col-sm-4">
+        <div class="card card-coach h-100 py-3">
+        {% if user.avatar %}
+              <img src="{{ vich_uploader_asset(user, 'file') }}" class="card-img-top img-thumbnail img-users mx-auto" />  
+              {% else %}
+                <img src="{{ asset('img/user-secret-solid.svg') }}" class="card-img-top img-thumbnail img-users mx-auto" />       
+        {% endif %}
+            <div class="card-body">
+              <p class="text-center">{{ user.firstname }} {{ user.lastname }}</p>
+            </div>
+        </div> 
+      </div>
+  
+    {% endfor %}
+  </div>
 {% endblock %}
