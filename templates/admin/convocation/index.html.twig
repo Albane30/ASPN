@@ -32,9 +32,11 @@
                 <td>{{ convocation.meeting }}</td>
                 <td>{{ convocation.content }}</td>
                 <td>{{ convocation.team.name }}</td>
+                <td>
                 {% for user in convocation.user %}
-                <td>{{ user.firstname ~ ' ' ~ user.lastname }}</td>
+                {{ user.firstname ~ ' ' ~ user.lastname }} <br>
                 {% endfor %}
+                </td>
                 <td>
                     <a href="{{ path('admin_C_convocation_show', {'id': convocation.id}) }}">show</a>
                     <a href="{{ path('admin_C_convocation_edit', {'id': convocation.id}) }}">edit</a>

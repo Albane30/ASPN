@@ -20,6 +20,11 @@
         {% endif %}
             <div class="card-body">
               <p class="text-center">{{ user.firstname }} {{ user.lastname }}</p>
+              {% if user.team %}
+              {% for team in user.team %}
+              <p>{{ team.name }}</p>
+               {% endfor %}
+               {% endif %}
             </div>
         </div> 
       </div>

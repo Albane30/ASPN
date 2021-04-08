@@ -52,7 +52,7 @@ class Convocation
     private $content;
 
     /**
-     * @ORM\OneToOne(targetEntity=Team::class, inversedBy="convocation", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Team::class, inversedBy="convocation", cascade={"persist"})
      */
     private $team;
 
@@ -149,7 +149,7 @@ class Convocation
     }
 
     public function setTeam(?Team $team): self
-    {
+    {   
         $this->team = $team;
 
         return $this;

@@ -54,7 +54,6 @@ class ConvocationType extends AbstractType
                 'label' => 'Infos'
             ])
             ->add('team', EntityType::class, [
-                'by_reference' => false,
                 'class' => Team::class,
                 'choice_label' => 'name'
             ])
