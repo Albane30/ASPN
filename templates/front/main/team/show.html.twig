@@ -11,7 +11,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="text-center text-white">{{ team.name }}</h1>
+<div>
+    <h1 class="text-center">{{ team.name }}</h1>
     {# {% for user in team.user %}    
     <p>{{ user.lastname }} {{ user.firstname }}</p>
     {% endfor %} #}
@@ -43,4 +44,16 @@
     </div>
 
     {% endif %}
+    <div class="text-center my-5">
+    {% if team.name =="Séniors 1" %}
+        <a class="btn" href="https://loire.fff.fr/competitions/?id=374021&poule=2&phase=1&type=ch&tab=ranking" target="_blank">Voir le classement</a>
+    {% elseif team.name =="Séniors 2" %}
+        <a class="btn" href="https://delegation-du-roannais.fff.fr/competitions/?id=379636&poule=2&phase=1&type=ch&tab=ranking" target="_blank">Voir le classement</a>
+    {% elseif team.name =="Féminines" %}
+        <a class="btn" href="https://loire.fff.fr/competitions/?id=375394&poule=1&phase=1&type=ch&tab=ranking" target="_blank">Voir le classement</a>
+        {% elseif team.name =="Loisirs" %}
+        <a class="btn" href="https://delegation-du-roannais.fff.fr/competitions/?id=378744&poule=2&phase=1&type=ch&tab=ranking" target="_blank">Voir le classement</a>
+    {% endif %}
+    </div>
+</div>
 {% endblock %}
