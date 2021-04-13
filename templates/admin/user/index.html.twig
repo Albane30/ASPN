@@ -1,50 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Licenciés{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
-
+    <h1 class="text-center my-2">Licenciés Admin</h1>
+    <a class="btn ms-3 my-2" href="{{ path('admin_U_player_new') }}">Ajouter un joueur</a>
+    <a class="btn ms-3 my-2" href="{{ path('admin_U_coach_new') }}">Ajouter un coach</a>
+    <a class="btn ms-3 my-2" href="{{ path('admin_U_leadership_new') }}">Ajouter un dirigeant</a>
+    <a class="btn ms-3 my-2" href="{{ path('admin_U_referee_new') }}">Ajouter un arbitre</a>
     <table class="table">
         <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Équipe</th>
-                <th>Avatar</th>
-                <th>Actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Équipe</th>
+                <th scope="col">Avatar</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.lastname }}</td>
-                <td>{{ user.firstname }}</td>
-                <td>
+                <td data-label="Id">{{ user.id }}</td>
+                <td data-label="Nom">{{ user.lastname }}</td>
+                <td data-label="Prénom">{{ user.firstname }}</td>
+                <td data-label="Équipe">
          {% for team in user.team %}  
                 {{ team.name }}<br>
                 {% endfor %}
                 </td>
-                <td><div class='adminUserAvatar'><img class='userAvatar' src="{{ vich_uploader_asset(user, 'file') }}" /></td></div>     
-                <td>
-                    <a href="{{ path('admin_U_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('admin_U_user_edit', {'id': user.id}) }}">edit</a>
+                <td data-label="Avatar"><div class='adminUserAvatar'><img class='userAvatar w-50' src="{{ vich_uploader_asset(user, 'file') }}" /></td></div>     
+                <td data-label="Actions">
+                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Voir" href="{{ path('admin_U_user_show', {'id': user.id}) }}"><i class="far fa-eye"></i></a>
+                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier" href="{{ path('admin_U_user_edit', {'id': user.id}) }}"><i class="fas fa-edit"></i></a>
+                    {{ include('admin/user/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="14">no records found</td>
+                <td colspan="14">Aucune licencié trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('admin_U_player_new') }}">Create new player</a>
-    <a href="{{ path('admin_U_coach_new') }}">Create new coach</a>
-    <a href="{{ path('admin_U_leadership_new') }}">Create new leadership</a>
-    <a href="{{ path('admin_U_referee_new') }}">Create new referee</a>
-
-
+    <div class="my-4">
+    <a class="btn ms-3" href="{{ path('admin_U_player_new') }}">Ajouter un joueur</a>
+    <a class="btn ms-3" href="{{ path('admin_U_coach_new') }}">Ajouter un coach</a>
+    <a class="btn ms-3" href="{{ path('admin_U_leadership_new') }}">Ajouter un dirigeant</a>
+    <a class="btn ms-3" href="{{ path('admin_U_referee_new') }}">Ajouter un arbitre</a>
+    <br><a class="btn ms-3 my-2" href="{{ path('admin') }}">Retour</a>
+    </div>
 {% endblock %}

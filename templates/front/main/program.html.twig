@@ -7,11 +7,13 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="content-program">
+    <h1 class="text-center pt-3">Programme</h1>
  {% for program in programs %}
-            <div>
-                <p>{{ program.date ? program.date|date('d-m-Y') : '' }}</p>
+            <div class="mx-md-5 py-2">
+                <p>Le {{ program.date ? program.date|date('d-m-Y à H:i') : '' }}</p>
                 <p>{{ program.content }}</p>
             </div>
 {% endfor %}
+</div>
 {% endblock %}

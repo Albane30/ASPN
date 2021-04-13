@@ -3,52 +3,55 @@
 {% block title %}Convocations{% endblock %}
 
 {% block body %}
-    <h1>Convocations</h1>
-
-    <table class="table">
+    <h1 class="text-center my-2">Convocations</h1>
+    <a class="btn ms-3 my-5" href="{{ path('admin_C_convocation_new') }}">Ajouter une convocation</a>
+    <table class="table table-responsive">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Place</th>
-                <th>Opponent</th>
-                <th>Meeting</th>
-                <th>Content</th>
-                <th>Équipe</th>
-                <th>Joueurs</th>
-                <th>actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Date</th>
+                <th scope="col">Type</th>
+                <th scope="col">Lieu</th>
+                <th scope="col">Adversaire</th>
+                <th scope="col">Rendez-vous</th>
+                <th scope="col">Infos</th>
+                <th scope="col">Équipe</th>
+                <th scope="col">Joueurs</th>
+                <th scope="col">Actions</th>
                 
             </tr>
         </thead>
         <tbody>
         {% for convocation in convocations %}
             <tr>
-                <td>{{ convocation.id }}</td>
-                <td>{{ convocation.date ? convocation.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ convocation.type }}</td>
-                <td>{{ convocation.place }}</td>
-                <td>{{ convocation.opponent }}</td>
-                <td>{{ convocation.meeting }}</td>
-                <td>{{ convocation.content }}</td>
-                <td>{{ convocation.team.name }}</td>
-                <td>
+                <td data-label="Id" scope="row">{{ convocation.id }}</td>
+                <td data-label="Date">{{ convocation.date ? convocation.date|date('d-m-Y H:i') : '' }}</td>
+                <td data-label="Type">{{ convocation.type }}</td>
+                <td data-label="Lieu">{{ convocation.place }}</td>
+                <td data-label="Adversaire">{{ convocation.opponent }}</td>
+                <td data-label="Rendez-vous">{{ convocation.meeting }}</td>
+                <td data-label="Infos">{{ convocation.content }}</td>
+                <td data-label="Équipes">{{ convocation.team.name }}</td>
+                <td data-label="Joueurs">
                 {% for user in convocation.user %}
                 {{ user.firstname ~ ' ' ~ user.lastname }} <br>
                 {% endfor %}
                 </td>
-                <td>
-                    <a href="{{ path('admin_C_convocation_show', {'id': convocation.id}) }}">show</a>
-                    <a href="{{ path('admin_C_convocation_edit', {'id': convocation.id}) }}">edit</a>
+                <td data-label="Actions">
+                    <a class="" data-bs-toggle="tooltip" data-bs-placement="top" title="Voir" href="{{ path('admin_C_convocation_show', {'id': convocation.id}) }}"><i class="far fa-eye"></i></a>
+                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier" href="{{ path('admin_C_convocation_edit', {'id': convocation.id}) }}"><i class="fas fa-edit"></i></a>
+                    {{ include('admin/convocation/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Pas de convocation</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('admin_C_convocation_new') }}">Create new</a>
+    <div class="my-4">
+        <a class="btn ms-3" href="{{ path('admin_C_convocation_new') }}">Ajouter une convocation</a>
+        <a class="btn" href="{{ path('admin') }}">Retour</a>
+    </div>
 {% endblock %}

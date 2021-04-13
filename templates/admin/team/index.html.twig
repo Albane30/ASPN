@@ -1,26 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Team index{% endblock %}
+{% block title %}Équipe Admin{% endblock %}
 
 {% block body %}
-    <h1>Team index</h1>
+    <h1 class="text-center my-2">Équipe</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for team in teams %}
             <tr>
-                <td>{{ team.id }}</td>
-                <td>{{ team.name }}</td>
-                <td>
-                    <a href="{{ path('admin_T_team_show', {'id': team.id}) }}"><i class="far fa-eye"></i></a>
-                    <a href="{{ path('admin_T_team_edit', {'id': team.id}) }}"><i class="fas fa-edit"></i></a>
+                <td data-label="Id">{{ team.id }}</td>
+                <td data-label="Name">{{ team.name }}</td>
+                <td data-label="Actions">
+                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Voir" href="{{ path('admin_T_team_show', {'id': team.id}) }}"><i class="far fa-eye"></i></a>
+                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier" href="{{ path('admin_T_team_edit', {'id': team.id}) }}"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -30,6 +30,8 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('admin_T_team_new') }}">Create new</a>
+    <div class="my-4">
+    <a class="btn ms-3" href="{{ path('admin_T_team_new') }}">Ajouter une équipe</a>
+    <a class="btn" href="{{ path('admin') }}">Retour</a>
+    </div>
 {% endblock %}

@@ -3,11 +3,18 @@
 {% block title %}{{article.title}}{% endblock %}
 {% block content %}
  <div>
-                <h3>{{ article.title }}</h3>
-                <p>{{ article.content }}</p>
+                <h3 class="text-center my-4 mx-3">{{ article.title }}</h3>
+
                 {% if article.picture !=null %}
-                <img src="{{ vich_uploader_asset(article.picture, 'file', 'App\\Entity\\Picture') }}" alt="{{ article.title }}" />
+                <div class="text-center">
+                  <img class="img-fluid rounded w-50" src="{{ vich_uploader_asset(article.picture, 'file', 'App\\Entity\\Picture') }}" alt="{{ article.title }}" />
+                </div>
                 {% endif %}
-                <p>Crée le {{ article.createdAt ? article.createdAt|date('d/m/Y H:i:s') : '' }}</p>
-  <a class="btn btn-dark" href="{{ path('home')}}">Retour</a>    
+                <div class="my-4 mx-3 mx-md-5">
+                  <p>{{ article.content }}</p>
+                  <p>Crée le {{ article.createdAt ? article.createdAt|date('d/m/Y H:i:s') : '' }}</p>
+                </div>
+                <div class="text-center">
+                  <a class="btn mx-3 mx-md-5 my-3" href="{{ path('home')}}">Retour</a>  
+                </div>  
 {% endblock %}

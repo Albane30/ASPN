@@ -1,28 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Result index{% endblock %}
+{% block title %}Resultats Admin{% endblock %}
 
 {% block body %}
-    <h1>Result index</h1>
+    <h1 class="text-center my-2">Resultats</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Content</th>
-                <th>actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Date</th>
+                <th scope="col">Contenu</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for result in results %}
             <tr>
-                <td>{{ result.id }}</td>
-                <td>{{ result.date ? result.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ result.content }}</td>
-                <td>
-                    <a href="{{ path('admin_R_result_show', {'id': result.id}) }}">show</a>
-                    <a href="{{ path('admin_R_result_edit', {'id': result.id}) }}">edit</a>
+                <td data-label="Id">{{ result.id }}</td>
+                <td data-label="Date">{{ result.date ? result.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td data-label="Contenu">{{ result.content }}</td>
+                <td data-label="Actions">
+                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Voir" href="{{ path('admin_R_result_show', {'id': result.id}) }}"><i class="far fa-eye"></i></a>
+                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier" href="{{ path('admin_R_result_edit', {'id': result.id}) }}"><i class="fas fa-edit"></i></a>
+                    {{ include('admin/result/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -32,6 +33,8 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('admin_R_result_new') }}">Create new</a>
+    <div class="my-4">
+        <a class="btn ms-3" href="{{ path('admin_R_result_new') }}">Ajouter un résultat</a>
+        <a class="btn" href="{{ path('admin') }}">Retour</a>
+    </div>
 {% endblock %}

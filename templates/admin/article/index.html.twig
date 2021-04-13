@@ -3,26 +3,26 @@
 {% block title %}Articles Admin{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Articles</h1>
+    <h1 class="text-center my-2">Articles</h1>
     <a class="btn my-5 ms-3" href="{{ path('admin_article_new') }}">Ajouter un article</a>
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Contenu</th>
-                <th>Crée le</th>
-                <th>Actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Contenu</th>
+                <th scope="col">Crée le</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for article in articles %}
             <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.title }}</td>
-                <td>{{ article.content }}</td>
-                <td>{{ article.createdAt ? article.createdAt|date('d-m-Y H:i:s') : '' }}</td>
-                <td>
+                <td data-label="Id">{{ article.id }}</td>
+                <td data-label="Titre">{{ article.title }}</td>
+                <td data-label="Contenu">{{ article.content }}</td>
+                <td data-label="Créé le">{{ article.createdAt ? article.createdAt|date('d-m-Y H:i') : '' }}</td>
+                <td data-label="Actions">
                     <a class="mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Voir" href="{{ path('admin_article_show', {'id': article.id}) }}"><i class="far fa-eye"></i></a>
                     <a class="mx-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier" href="{{ path('admin_article_edit', {'id': article.id}) }}"><i class="fas fa-edit"></i></a>
                     {{ include('admin/article/_delete_form.html.twig') }}
@@ -35,7 +35,8 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn ms-3" href="{{ path('admin_article_new') }}">Ajouter un article</a>
-    <a class="btn" href="{{ path('admin') }}">Retour</a>
+    <div class="my-4">
+        <a class="btn ms-3" href="{{ path('admin_article_new') }}">Ajouter un article</a>
+        <a class="btn" href="{{ path('admin') }}">Retour</a>
+    </div>
 {% endblock %}
