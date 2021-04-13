@@ -9,8 +9,9 @@
 {% block content %}
 
  {% for program in programs %}
-            
+            <div>
                 <p>{{ program.date ? program.date|date('d-m-Y') : '' }}</p>
                 <p>{{ program.content }}</p>
+            </div>
 {% endfor %}
 {% endblock %}

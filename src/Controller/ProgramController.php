@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/program", name="program")
- */
+
 class ProgramController extends AbstractController
 {
     /**
-     * @Route("/", name="programAll", methods={"GET"})
+     * @Route("/program", name="program", methods={"GET"})
      */
     public function index(ProgramRepository $programRepository): Response
     {

@@ -18,3 +18,9 @@ $('.add-another-collection-widget').click(function (e) {
     var newElem = $(list.attr('data-widget-tags')).html(newWidget);
     newElem.appendTo(list);
 });
+
+
+//Tooltip
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })

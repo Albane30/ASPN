@@ -23,6 +23,19 @@ class MainController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/articles", name="articles")
+     */
+    public function articles(Request $request): Response
+    {
+        $repo = $this->getDoctrine()->getRepository(Article::class);
+        $articles = $repo->findBy([], ['createdAt'=>'DESC']);
+        return $this->render('front/main/articles.html.twig', [
+            'controller_name' => 'MainController',
+            'articles' => $articles,
+        ]);
+    }
+
     /**
      * @Route("show/{id}", name="showInHome", methods={"GET"})
      */

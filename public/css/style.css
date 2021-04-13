@@ -59,6 +59,9 @@ ul.show {
 .navbar-nav {
   margin-left: 20vw;
 }
+.nav-link.active {
+  background-color: #ffffff1a !important;
+}
 .navbar {
   padding: 0;
 }
@@ -93,6 +96,26 @@ body {
   background-color: #ffffff;
   color: #286335;
   border: 1px solid #286335;
+}
+
+a {
+  text-decoration: none;
+  color: #286335;
+}
+a:hover {
+  color: #53dd6c;
+}
+/*content articles*/
+.a-title {
+  color: #ffffff;
+}
+/*Footer*/
+footer {
+  color: #ffffff;
+}
+.legal {
+  color: darkgray;
+  font-size: 0.8rem;
 }
 /*Admin*/
 
@@ -131,6 +154,10 @@ body {
   height: 18vh !important;
 }
 
+i {
+  color: #286335;
+}
+
 /*Homepage*/
 .container > div {
   justify-content: center;
@@ -141,10 +168,9 @@ body {
   margin-right: 5vw;
   color: #000;
 }
-.articlePicture {
-  margin: auto;
+.card-homepage {
+  opacity: 0.8;
 }
-
 /* Bureau */
 
 #team .card {
@@ -266,4 +292,11 @@ body {
 .img-carousel-structure {
   max-height: 500px;
   object-fit: cover;
+}
+
+/*Admin*/
+form > div {
+  display: grid;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }

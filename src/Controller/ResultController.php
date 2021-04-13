@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/result", name="result")
- */
+
 class ResultController extends AbstractController
 {
     /**
-     * @Route("/", name="resultAll", methods={"GET"})
+     * @Route("/result", name="result")
      */
     public function index(ResultRepository $resultRepository): Response
     {
