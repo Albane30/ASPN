@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Convocation{% endblock %}
+{% block title %}Nouvelle Convocation{% endblock %}
 
 {% block body %}
-    <h1>Create new Convocation</h1>
+    <h1 class="text-center my-3">Nouvelle convocation</h1>
 
     {{ include('admin/convocation/_form.html.twig') }}
-
-    <a href="{{ path('admin_C_convocation_index') }}">back to list</a>
+    <div class="text-center">
+      <a class="btn my-3" href="{{ path('admin_C_convocation_index') }}">Retour</a>
+    </div>
 
 
 

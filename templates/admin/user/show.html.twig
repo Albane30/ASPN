@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Licenciés{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+    <h1 class="text-center my-2">Licenciés</h1>
 
     <table class="table">
         <tbody>
@@ -16,7 +16,7 @@
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Roles</th>
+                <th>Rôles</th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
             <tr>
@@ -61,10 +61,13 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('admin_U_user_index') }}">back to list</a>
-
-    {# <a href="{{ path('admin_U_user_edit', {'id': user.id}) }}">edit</a> #}
-
-    {{ include('admin/user/_delete_form.html.twig') }}
+    <div class="d-flex">
+        <a class="btn my-3 mx-4" href="{{ path('admin_U_user_edit', {'id': user.id}) }}">Modifier</a>
+        <div class="my-3">
+            {{ include('admin/user/_delete_form.html.twig') }}
+        </div>
+    </div>
+    <div class="text-center">
+        <a class="btn my-3 mx-4" href="{{ path('admin_U_user_index') }}">Retour</a>
+    </div>
 {% endblock %}

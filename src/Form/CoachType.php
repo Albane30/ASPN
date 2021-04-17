@@ -29,7 +29,8 @@ class CoachType extends AbstractType
                 'choice_label' => 'name'
             ] )
             ->add('file', VichImageType::class, [
-                'label' => 'Avatar'
+                'label' => 'Avatar',
+                'required'=> false,
             ])
         ;
             

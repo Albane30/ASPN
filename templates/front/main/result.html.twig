@@ -7,13 +7,19 @@
 {% endblock %}
 
 {% block content %}
-<div class="content-result">
-    <h1 class="text-center pt-3">Résultats</h1>
- {% for result in results %}
-            <div class="mx-md-5 py-2">
-                <p>{{ result.date ? result.date|date('d-m-Y H:i:s') : '' }}</p>
-                <p>{{ result.content }}</p>
+<section id="content-result">
+    <div class="row pb-5">
+         <div class="col-md-6">
+            <h1 class="result-title text-center pt-3">Résultats</h1>
+            {% for result in results %}
+            <div class="card card-result mx-md-5 py-1 my-3">
+                <div class="card-body">
+                    <p>{{ result.date ? result.date|date('d-m-Y H:i:s') : '' }}</p>
+                    <p>{{ result.content }}</p>
+                </div>
             </div>
 {% endfor %}
-</div>
+        </div>
+    </div>
+</section>
 {% endblock %}

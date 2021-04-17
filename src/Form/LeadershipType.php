@@ -26,7 +26,8 @@ class LeadershipType extends AbstractType
                 'label' => 'Rôle'
             ])
             ->add('file', VichImageType::class, [
-                'label' => 'Avatar'
+                'label' => 'Avatar',
+                'required'=> false,
             ])
         ;
             

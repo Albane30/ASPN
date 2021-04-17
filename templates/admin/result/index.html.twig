@@ -4,6 +4,7 @@
 
 {% block body %}
     <h1 class="text-center my-2">Resultats</h1>
+    <a class="btn ms-3 my-5" href="{{ path('admin_R_result_new') }}">Ajouter un résultat</a>
 
     <table class="table">
         <thead>
@@ -28,7 +29,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>

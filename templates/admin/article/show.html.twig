@@ -3,7 +3,7 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
+    <h1 class="text-center my-2">Article</h1>
 
     <table class="table">
         <tbody>
@@ -12,23 +12,28 @@
                 <td>{{ article.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <td>{{ article.title }}</td>
             </tr>
             <tr>
-                <th>Content</th>
+                <th>Contenu</th>
                 <td>{{ article.content }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
+                <th>Crée le : </th>
                 <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('admin_article_index') }}">back to list</a>
-
-    <a href="{{ path('admin_article_edit', {'id': article.id}) }}">edit</a>
-
-    {{ include('admin/article/_delete_form.html.twig') }}
+    
+    <div class="d-flex">
+        <a class="btn my-3 mx-4" href="{{ path('admin_article_edit', {'id': article.id}) }}">Modifier</a>
+        <div class="my-3">
+        {{ include('admin/article/_delete_form.html.twig') }}
+        </div>
+    </div>
+    <div class="text-center">
+        <a class="btn my-3" href="{{ path('admin_article_index') }}">Retour</a>
+    </div>
 {% endblock %}

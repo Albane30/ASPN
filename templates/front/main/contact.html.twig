@@ -1,0 +1,29 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{%block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+<section id="contact" class="py-5">
+    <div class="container"> 
+        <div class="row">
+        <h1 class="contact-title text-center py-5 fw-bold">A.S POUILLY LES NONAINS</h1>
+            <div class="col-12 col-md-8 order-2 order-md-1">
+                <iframe class="rounded w-100 px-2 mb-3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1925.5517953486813!2d3.9804068146925675!3d46.04445737911205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4040cb4fafd39%3A0xa3b64c9402ae61df!2sAll%C3%A9e%20du%20Stade%2C%2042155%20Pouilly-les-Nonains!5e1!3m2!1sfr!2sfr!4v1618349898203!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="col-12 col-md-4 px-4 px-md-1 order-1 order-md-2">
+                <p class="contact-text mb-0">Stade René Oblette</p>
+                <p class="contact-text mb-0">Allée du stade</p>
+                <p class="contact-text mb-0">42155 POUILLY LES NONAINS</p>
+                <p class="contact-text mb-0">Tél : 0679599458</p>
+                <p class="contact-text">Email : patmoutet@hotmail.fr</p>
+                <p class="contact-text pt-3">Pour consulter les coordonnées des différents responsables d'équipe :</p>
+                <a class="btn mb-5 m-auto" href="https://loire.fff.fr/recherche-clubs/?scl=8292&tab=staff" target="_blank">Cliquez ici</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

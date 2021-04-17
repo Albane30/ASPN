@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Leadership{% endblock %}
+{% block title %}Nouveau dirigeant{% endblock %}
 
 {% block body %}
-    <h1>Create new leadership</h1>
+    <h1>Nouveau dirigeant</h1>
 
     {{ include('admin/user/_form.html.twig') }}
-
-    <a class="btn" href="{{ path('admin_U_user_index') }}">Retour</a>
+    <div class="text-center">
+        <a class="btn my-3" class="btn" href="{{ path('admin_U_user_index') }}">Retour</a>
+    </div>
 {% endblock %}

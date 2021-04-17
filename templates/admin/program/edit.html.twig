@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Program{% endblock %}
+{% block title %}Modifier Programme{% endblock %}
 
 {% block body %}
-    <h1>Edit Program</h1>
+    <h1 class="text-center my-3">Modifier un programme</h1>
 
-    {{ include('admin/program/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('admin_P_program_index') }}">back to list</a>
-
-    {{ include('admin/program/_delete_form.html.twig') }}
+    {{ include('admin/program/_form.html.twig', {'button_label': 'Modifier'}) }}
+    <div class="text-center">
+        <a class="btn my-3" href="{{ path('admin_P_program_index') }}">Retour</a>
+    </div>
 {% endblock %}

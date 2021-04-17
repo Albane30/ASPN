@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Result{% endblock %}
+{% block title %}Nouveau résultat{% endblock %}
 
 {% block body %}
-    <h1>Create new Result</h1>
+    <h1 class="text-center my-3">Nouveau résultat</h1>
 
     {{ include('admin/result/_form.html.twig') }}
-
-    <a href="{{ path('admin_R_result_index') }}">back to list</a>
+    <div class="text-center">
+        <a class="btn my-3" href="{{ path('admin_R_result_index') }}">Retour</a>
+    </div>
 {% endblock %}

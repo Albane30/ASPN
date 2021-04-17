@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Result{% endblock %}
+{% block title %}Resultat{% endblock %}
 
 {% block body %}
-    <h1>Result</h1>
+    <h1 class="text-center my-2">Resultat</h1>
 
     <table class="table">
         <tbody>
@@ -13,18 +13,20 @@
             </tr>
             <tr>
                 <th>Date</th>
-                <td>{{ result.date ? result.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ result.date ? result.date|date('Y-m-d H:i') : '' }}</td>
             </tr>
             <tr>
-                <th>Content</th>
+                <th>Contenu</th>
                 <td>{{ result.content }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('admin_R_result_index') }}">back to list</a>
-
-    <a href="{{ path('admin_R_result_edit', {'id': result.id}) }}">edit</a>
-
-    {{ include('admin/result/_delete_form.html.twig') }}
+    <div class="d-flex">
+        <a class="btn my-3 mx-4" href="{{ path('admin_R_result_edit', {'id': result.id}) }}">Modifier</a> 
+        <div class="my-3">
+        {{ include('admin/result/_delete_form.html.twig') }}
+        </div>
+    </div>
+    <a class="btn my-3 mx-4" href="{{ path('admin_R_result_index') }}">Retour</a>
+    
 {% endblock %}

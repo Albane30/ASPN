@@ -72,10 +72,12 @@ body {
   width: 100%;
 }
 
-.titre {
+.title-home {
   color: #ffffff;
   text-align: center;
   font-family: "Bowlby One";
+  font-size: 3rem;
+  font-weight: 400;
 }
 .i-home {
   color: #ffffff;
@@ -122,6 +124,7 @@ footer {
   color: darkgray;
   font-size: 0.8rem;
 }
+
 /*Admin*/
 
 .col-sm-4 {
@@ -175,11 +178,6 @@ i {
   opacity: 0.8;
 }
 /* Bureau */
-
-#team .card {
-  border: none;
-  background: #ffffff;
-}
 
 .image-flip:hover .backside,
 .image-flip.hover .backside {
@@ -297,28 +295,37 @@ i {
   object-fit: cover;
 }
 /*Program*/
-.content-program {
+#content-program {
   background-image: linear-gradient(
-      rgba(135, 232, 159, 0.5),
-      rgba(135, 232, 159, 0.5)
+      rgba(106, 132, 112, 0.3),
+      rgba(106, 132, 112, 0.3)
     ),
     url("../img/pexels-program.jpg");
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  min-height: 100vh;
   padding-left: 5vw;
   padding-right: 5vw;
 }
+.program-title,
+.result-title {
+  color: #ffffff;
+}
+
+.card-program,
+.card-result {
+  opacity: 0.7;
+  border: 5px solid #286335;
+}
 /*Resultats*/
-.content-result {
+#content-result {
   background-image: linear-gradient(
-      rgba(135, 232, 159, 0.5),
-      rgba(135, 232, 159, 0.5)
+      rgba(106, 132, 112, 0.3),
+      rgba(106, 132, 112, 0.3)
     ),
-    url("../img/pexels-resultat.jpg");
+    url("../img/result-unsplash.jpg");
   background-size: cover;
-  background-position: center;
-  height: 100vh;
+  min-height: 100vh;
   padding-left: 5vw;
   padding-right: 5vw;
 }
@@ -328,8 +335,21 @@ form > div {
   margin-left: 2rem;
   margin-right: 2rem;
 }
-
-table {
+#convocation > div,
+#article > div,
+#result > div,
+#program > div,
+#team > div,
+#player > div,
+#referee > div,
+#coach > div,
+#leadership > div {
+  display: grid;
+}
+.vich-image > a > img {
+  width: 50%;
+}
+#team_pictures_0 > img table {
   border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;
@@ -403,5 +423,55 @@ table th {
 
   table td:last-child {
     border-bottom: 0;
+  }
+}
+
+/*Convocations*/
+#convoc {
+  background-image: linear-gradient(
+      rgba(135, 232, 159, 0.2),
+      rgba(135, 232, 159, 0.2)
+    ),
+    url("../img/convocs.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+.card-convoc {
+  opacity: 0.8;
+}
+.convoc-title {
+  background-color: #286335;
+  color: #ffffff;
+}
+
+/*Contact*/
+#contact {
+  width: 100%;
+  height: auto;
+  background-image: linear-gradient(
+      rgba(37, 55, 42, 0.5),
+      rgba(37, 55, 42, 0.5)
+    ),
+    url("../img/contact.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.contact-text,
+.contact-title {
+  color: #ffffff;
+}
+
+.contact-title {
+  font-size: 4rem;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .title-home {
+    font-size: 1.5rem;
+  }
+  .i-home {
+    font-size: 1rem !important;
   }
 }

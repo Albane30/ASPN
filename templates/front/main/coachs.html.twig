@@ -8,28 +8,40 @@
 
 {% block content %}
 
-  <div class="row m-5">
-  
+<section id="coach-a" class="pb-5">
+  <div class="row m-5 justify-content-around">
+  <!-- Coach member -->
     {% for user in users %}
-      <div class="col-sm-4">
-        <div class="card card-coach h-100 py-3">
-        {% if user.avatar %}
-              <img src="{{ vich_uploader_asset(user, 'file') }}" class="card-img-top img-thumbnail img-users mx-auto" /> 
-              {% else %}
-                <img src="{{ asset('img/user-secret-solid.svg') }}" class="card-img-top img-thumbnail img-users mx-auto" />         
-        {% endif %}
-            <div class="card-body">
-              <p class="text-center">{{ user.firstname }} {{ user.lastname }}</p>
-              {% if user.team %}
-              {% for team in user.team %}
-              <p>{{ team.name }}</p>
-               {% endfor %}
-               {% endif %}
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+          <div class="mainflip">
+            <div class="frontside">
+              <div class="card">
+                <div class="card-body text-center">
+                  {% if user.avatar %}
+                  <p><img src="{{ vich_uploader_asset(user, 'file') }}" class="card-img-top img-thumbnail img-users mx-auto" /></p>
+                  {% else %}
+                  <p><img src="{{ asset('img/user-secret-solid.svg') }}" class="card-img-top img-thumbnail img-users mx-auto" /> </p>        
+                  {% endif %}
+                  <h4 class="card-title"> {{ user.firstname }} {{ user.lastname }}</h4>
+                </div>
+              </div>
             </div>
-        </div> 
-      </div>
-  
+            <div class="backside">
+              <div class="card">
+                <div class="card-body justify-content-center d-flex align-items-center">
+                  {% if user.team %}
+                  {% for team in user.team %}
+                  <h4 class="card-title mb-0">{{ team.name }}</h4>
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>  
     {% endfor %}
   </div>
-
+</section>
 {% endblock %}

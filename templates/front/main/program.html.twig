@@ -7,13 +7,19 @@
 {% endblock %}
 
 {% block content %}
-<div class="content-program">
-    <h1 class="text-center pt-3">Programme</h1>
- {% for program in programs %}
-            <div class="mx-md-5 py-2">
-                <p>Le {{ program.date ? program.date|date('d-m-Y à H:i') : '' }}</p>
-                <p>{{ program.content }}</p>
+<section id="content-program">   
+    <div class="row pb-5">
+         <div class="col-md-6">
+            <h1 class="program-title text-center pt-3">Programme</h1>
+            {% for program in programs %}
+            <div class="card card-program mx-md-5 py-1 my-3">
+                <div class="card-body">
+                    <p>Le {{ program.date ? program.date|date('d-m-Y à H:i') : '' }}</p>
+                    <p>{{ program.content }}</p>
+                </div>
             </div>
 {% endfor %}
-</div>
+         </div>          
+    </div>
+</section>
 {% endblock %}
