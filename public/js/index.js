@@ -1,3 +1,4 @@
+//Upload multiple
 $('.add-another-collection-widget').click(function (e) {
     var list = $($(this).attr('data-list-selector'));
     // Try to find the counter of the list or use the length of the list
@@ -19,6 +20,35 @@ $('.add-another-collection-widget').click(function (e) {
     newElem.appendTo(list);
 });
 
+//Convocations
+var $team = $('#convocation_team');
+var $token = $('#convocation__token');
+
+// When team gets selected ...
+$team.change(function() {
+  // ... retrieve the corresponding form.
+  var $form = $(this).closest('form');
+  // Simulate form data, but only include the selected team value.
+  var data = {};
+  data[$team.attr('name')] = $team.val();
+  data[$token.attr('name')] = $token.val();
+ 
+  // Submit data via AJAX to the form's action path.
+  $.ajax({
+    url : $form.attr('action'),
+    type: $form.attr('method'),
+    data : data,
+    success: function(html) {
+        
+      // Replace current user field ...
+      $('#convocation_user').replaceWith(
+        // ... with the returned one from the AJAX response.
+        $(html).find('#convocation_user')
+      );
+      // User field now displays the appropriate users.
+    }
+  });
+});
 
 //Tooltip
 $(function () {

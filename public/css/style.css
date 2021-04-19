@@ -435,7 +435,7 @@ table th {
     url("../img/convocs.jpg");
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 .card-convoc {
   opacity: 0.8;
@@ -443,6 +443,9 @@ table th {
 .convoc-title {
   background-color: #286335;
   color: #ffffff;
+}
+.convoc-none {
+  opacity: 0.6;
 }
 
 /*Contact*/

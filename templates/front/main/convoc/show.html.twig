@@ -33,7 +33,7 @@
                   {% else %}
                   <p class="fw-bold">Joueurs convoqués</p>
                   {% endif %}
-                  <div class="d-flex">
+                  <div class="">
                   {% for user in convocation.user %}
                   <p class="me-2">{{ user.firstname ~ ' ' ~ user.lastname }}</p>
                   {% endfor %}
@@ -43,7 +43,7 @@
          </div>
       </div>      
    {% else %}
-   <div>Pas de convocation pour cette équipe</div>
+   <div class="text-center py-5 h1 card convoc-none">Pas de convocation pour cette équipe</div>
    {% endif %}
 
 </section>
