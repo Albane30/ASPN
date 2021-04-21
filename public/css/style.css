@@ -86,10 +86,9 @@ body {
 .content {
   width: 100%;
   height: auto;
-  background-image: url("../img/backgroundHome.jpeg");
+  background-image: url("../img/aspn-bg2.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
 }
 .article {
   color: #ffffff;
@@ -163,7 +162,9 @@ footer {
 i {
   color: #286335;
 }
-
+.add-another-collection-widget {
+  margin: auto;
+}
 /*Homepage*/
 .container > div {
   justify-content: center;
@@ -469,7 +470,11 @@ table th {
 .contact-title {
   font-size: 4rem;
 }
+.contact-subtitle {
+  color: #ffffff;
+}
 
+/*Media queries*/
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .title-home {
     font-size: 1.5rem;
